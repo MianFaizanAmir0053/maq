@@ -1,0 +1,23 @@
+/* ===== Site details: edit these and every page updates (header drawer, catering, contact, footer). ===== */
+export const SITE = {
+  name: 'MAQ Burgers',
+  phone: '(02) 0000 0000', // PLACEHOLDER
+  email: 'hello@example.com', // PLACEHOLDER
+  address: 'Your street address, Suburb STATE 0000', // PLACEHOLDER
+  hours: [
+    ['Monday', '11am – 10pm'],
+    ['Tuesday', '11am – 10pm'],
+    ['Wednesday', '11am – 10pm'],
+    ['Thursday', '11am – 10pm'],
+    ['Friday', '11am – 11pm'],
+    ['Saturday', '11am – 11pm'],
+    ['Sunday', '12pm – 10pm'],
+  ] as [string, string][], // PLACEHOLDER
+  /** Public URL of the deployed site, used for the sitemap and social links. */
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+};
+
+export const telHref = 'tel:' + SITE.phone.replace(/[^\d+]/g, '');
+export const mailHref = 'mailto:' + SITE.email;
+export const mapsHref =
+  'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('MAQ Burgers ' + SITE.address);

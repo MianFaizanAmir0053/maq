@@ -1,0 +1,9 @@
+{
+  "name": "maq",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MAQ Burgers landing page",
+  "scripts": {
+    "dev": "npx --yes http-server@14.1.1 . -p 5500 -c-1"
+  }
+}
