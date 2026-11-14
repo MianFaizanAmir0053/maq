@@ -33,7 +33,7 @@ export default function CateringPage() {
           </div>
         </div>
 
-        <div className="wrap vsec">
+        <div className="wrap vsec" id="how-it-works">
           <div className="vhead"><span className="eyebrow-l">How it works</span><h2 className="vh2">Three steps to a well-fed event</h2></div>
           <ol className="steps">
             <li><span className="st-n">01</span><h3>Tell us about it</h3><p>Send the date, headcount and the kind of event using the form below.</p></li>
@@ -42,7 +42,7 @@ export default function CateringPage() {
           </ol>
         </div>
 
-        <div className="wrap vsec">
+        <div className="wrap vsec" id="occasions">
           <div className="vhead"><span className="eyebrow-l">Perfect for</span><h2 className="vh2">Any table, any size</h2></div>
           <ul className="occ">
             {OCCASIONS.map(([src, label]) => (

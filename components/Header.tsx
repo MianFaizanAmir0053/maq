@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
-import { CATEGORIES, categoryHref } from '@/lib/menu';
+import { MENU_GROUPS, categoryHref } from '@/lib/menu';
 import { SITE, mailHref, telHref } from '@/lib/site';
+import NavMenu from './NavMenu';
 import Pic from './Pic';
 import { CloseIcon, SearchIcon } from './icons';
 
@@ -99,13 +100,7 @@ export default function Header() {
               <span className="nb-word" aria-hidden="true"><b>MAQ</b><i>Burgers</i></span>
             </Link>
 
-            <nav className="nb-links" aria-label="Main">
-              {([['/#menu', 'menu', 'Menu'], ['/catering', 'catering', 'Catering'], ['/contact', 'contact', 'Contact']] as const).map(([href, key, label]) => (
-                <Link key={key} href={href} className={section === key ? 'on' : undefined} aria-current={section === key ? 'page' : undefined}>
-                  {label}
-                </Link>
-              ))}
-            </nav>
+            <NavMenu />
 
             <div className="nb-actions">
               <Link className="nb-search" href="/#find" onClick={findFood} aria-label="Search the menu" aria-keyshortcuts="/">
@@ -147,18 +142,23 @@ export default function Header() {
             </nav>
             <nav className="dr-cats" aria-labelledby="dr-cats-title">
               <span className="dr-eyebrow" id="dr-cats-title">Menu categories</span>
-              <ul>
-                {CATEGORIES.map(c => {
-                  const on = pathname === categoryHref(c.id) || pathname.startsWith(categoryHref(c.id) + '/');
-                  return (
-                    <li key={c.id}>
-                      <Link href={categoryHref(c.id)} className={on ? 'on' : undefined} aria-current={on ? 'page' : undefined}>
-                        <span>{c.title}</span><em aria-label={c.count + (c.count === 1 ? ' item' : ' items')}>{c.count}</em>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+              {MENU_GROUPS.map(g => (
+                <div className="dr-group" key={g.title}>
+                  <span className="dr-gh">{g.title}</span>
+                  <ul>
+                    {g.cats.map(c => {
+                      const on = pathname === categoryHref(c.id) || pathname.startsWith(categoryHref(c.id) + '/');
+                      return (
+                        <li key={c.id}>
+                          <Link href={categoryHref(c.id)} className={on ? 'on' : undefined} aria-current={on ? 'page' : undefined}>
+                            <span>{c.title}</span><em aria-label={c.count + (c.count === 1 ? ' item' : ' items')}>{c.count}</em>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
             </nav>
           </div>
           <div className="dr-foot">

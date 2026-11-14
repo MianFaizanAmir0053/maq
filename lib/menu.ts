@@ -247,6 +247,14 @@ export const POPULAR_ITEMS: MenuItem[] = POPULAR
   .map(([cat, name]) => categoryById(cat)?.items.find(it => it.name === name))
   .filter((it): it is MenuItem => !!it);
 
+/** Categories grouped for the navbar's mega menu and the side drawer. Every category appears once. */
+export const MENU_GROUPS: { title: string; cats: Category[] }[] = [
+  { title: 'Burgers', ids: ['burgers', 'chicken'] },
+  { title: 'Pizza & Kebabs', ids: ['pizzas', 'kebabs', 'meat-boxes'] },
+  { title: 'Sides & Snacks', ids: ['fries', 'wings', 'tenders', 'sides', 'kids'] },
+  { title: 'Extras', ids: ['add-ons', 'sauces'] },
+].map(g => ({ title: g.title, cats: g.ids.map(id => categoryById(id)!) }));
+
 export const itemHref = (p: MenuItem) => `/menu/${p.catId}/${p.slug}`;
 export const categoryHref = (id: string) => `/menu/${id}`;
 export const fromText = (p: MenuItem) => (p.sized ? 'From ' + money(p.single!) : money(p.price!));

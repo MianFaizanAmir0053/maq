@@ -26,7 +26,7 @@ export default function ContactPage() {
           </div>
           <div className="cgrid">
             <div className="ccards">
-              <div className="ccard">
+              <div className="ccard" id="visit">
                 {ico(<><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></>)}
                 <div><h2>Visit</h2><p>{SITE.address}</p><a className="clink" href={mapsHref} target="_blank" rel="noopener">Get directions ↗</a></div>
               </div>
@@ -38,12 +38,12 @@ export default function ContactPage() {
                 {ico(<><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></>)}
                 <div><h2>Email</h2><p><a href={mailHref}>{SITE.email}</a></p></div>
               </div>
-              <div className="ccard hours">
+              <div className="ccard hours" id="hours">
                 {ico(<><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></>)}
                 <div><h2>Opening hours</h2><HoursList /></div>
               </div>
             </div>
-            <div className="fcard fcard-c">
+            <div className="fcard fcard-c" id="message">
               <ContactForm />
             </div>
           </div>
