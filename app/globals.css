@@ -1382,3 +1382,6 @@ header.nb .nb-pop{top:calc(100% + 14px)}
  header.nb .nb-brand{gap:0}
 }
 header.nb .nb-word i{text-transform:uppercase;font-size:15px;letter-spacing:.08em}
+/* dock: text on the cream pill stays dark, including the rolled-in label and an open dropdown's link */
+header.nb .nb-roll>span+span{color:inherit}
+header.nb .nb-links .nb-item.open>a{color:#111111}
