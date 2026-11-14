@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Anton, Cormorant_Garamond, Plus_Jakarta_Sans } from 'next/font/google';
+import { Anton, Cormorant_Garamond, Plus_Jakarta_Sans, Luckiest_Guy } from 'next/font/google';
 import Fabs from '@/components/Fabs';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -9,6 +9,7 @@ import './globals.css';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-anton', display: 'swap' });
 const cormorant = Cormorant_Garamond({ weight: '500', style: 'italic', subsets: ['latin'], variable: '--font-cormorant', display: 'swap' });
 const jakarta = Plus_Jakarta_Sans({ weight: ['400', '500', '600', '700'], subsets: ['latin'], variable: '--font-jakarta', display: 'swap' });
+const luckiest = Luckiest_Guy({ weight: '400', subsets: ['latin'], variable: '--font-luckiest', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -27,7 +28,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${anton.variable} ${cormorant.variable} ${jakarta.variable}`} data-scroll-behavior="smooth">
+    <html lang="en" className={`${anton.variable} ${cormorant.variable} ${jakarta.variable} ${luckiest.variable}`} data-scroll-behavior="smooth">
       <body>
         <a className="skip" href="#main">Skip to content</a>
         <Header />

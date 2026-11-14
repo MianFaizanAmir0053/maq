@@ -1385,3 +1385,19 @@ header.nb .nb-word i{text-transform:uppercase;font-size:15px;letter-spacing:.08e
 /* dock: text on the cream pill stays dark, including the rolled-in label and an open dropdown's link */
 header.nb .nb-roll>span+span{color:inherit}
 header.nb .nb-links .nb-item.open>a{color:#111111}
+/* dock: text colour follows the pill (NavMenu sets data-lit on the nav to the item under the pill) */
+header.nb .nb-links .nb-item>a,header.nb .nb-links:hover .nb-item>a.on,header.nb .nb-links .nb-item:hover>a,header.nb .nb-links .nb-item:focus-within>a,header.nb .nb-links .nb-item.open>a{color:rgba(255,255,255,.62)}
+header.nb .nb-links .nb-item>a:hover{color:#fff}
+header.nb .nb-links[data-lit="home"] [data-k="home"]>a,header.nb .nb-links[data-lit="menu"] [data-k="menu"]>a,header.nb .nb-links[data-lit="catering"] [data-k="catering"]>a,header.nb .nb-links[data-lit="contact"] [data-k="contact"]>a,header.nb .nb-links[data-lit="home"] [data-k="home"]>a:hover,header.nb .nb-links[data-lit="menu"] [data-k="menu"]>a:hover,header.nb .nb-links[data-lit="catering"] [data-k="catering"]>a:hover,header.nb .nb-links[data-lit="contact"] [data-k="contact"]>a:hover{color:#111111}
+header.nb .nb-links .nb-item .nb-caret,header.nb .nb-links:hover .nb-item.on:not(:hover) .nb-caret{color:rgba(255,255,255,.45)}
+header.nb .nb-links[data-lit="home"] [data-k="home"] .nb-caret,header.nb .nb-links[data-lit="menu"] [data-k="menu"] .nb-caret,header.nb .nb-links[data-lit="catering"] [data-k="catering"] .nb-caret,header.nb .nb-links[data-lit="contact"] [data-k="contact"] .nb-caret{color:rgba(17,17,17,.6)}
+header.nb .nb-links[data-lit="home"] [data-k="home"].open .nb-caret,header.nb .nb-links[data-lit="menu"] [data-k="menu"].open .nb-caret,header.nb .nb-links[data-lit="catering"] [data-k="catering"].open .nb-caret,header.nb .nb-links[data-lit="contact"] [data-k="contact"].open .nb-caret{color:#111111}
+/* MAQ wordmark in a bouncy cartoon display face */
+header.nb .nb-word b{font:400 25px/1 var(--font-luckiest),Impact,sans-serif;letter-spacing:.04em;padding-top:3px}
+header.nb .nb-word{align-items:center}
+
+/* dock: glass pill (translucent white) with white text on the item under it */
+header.nb .nb-glide{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+header.nb .nb-links[data-lit="home"] [data-k="home"]>a,header.nb .nb-links[data-lit="menu"] [data-k="menu"]>a,header.nb .nb-links[data-lit="catering"] [data-k="catering"]>a,header.nb .nb-links[data-lit="contact"] [data-k="contact"]>a,header.nb .nb-links[data-lit="home"] [data-k="home"]>a:hover,header.nb .nb-links[data-lit="menu"] [data-k="menu"]>a:hover,header.nb .nb-links[data-lit="catering"] [data-k="catering"]>a:hover,header.nb .nb-links[data-lit="contact"] [data-k="contact"]>a:hover{color:#fff}
+header.nb .nb-links[data-lit="home"] [data-k="home"] .nb-caret,header.nb .nb-links[data-lit="menu"] [data-k="menu"] .nb-caret,header.nb .nb-links[data-lit="catering"] [data-k="catering"] .nb-caret,header.nb .nb-links[data-lit="contact"] [data-k="contact"] .nb-caret{color:rgba(255,255,255,.7)}
+header.nb .nb-links[data-lit="home"] [data-k="home"].open .nb-caret,header.nb .nb-links[data-lit="menu"] [data-k="menu"].open .nb-caret,header.nb .nb-links[data-lit="catering"] [data-k="catering"].open .nb-caret,header.nb .nb-links[data-lit="contact"] [data-k="contact"].open .nb-caret{color:#fff}

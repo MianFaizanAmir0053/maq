@@ -116,6 +116,9 @@ export default function NavMenu() {
   const moveGlide = (to: HTMLElement | null | undefined) => {
     const g = glide.current;
     if (!g) return;
+    // the item under the pill gets dark text. Kept on the nav as data-lit (not a class on the item)
+    // because React re-renders the items' className whenever a dropdown opens.
+    if (nav.current) nav.current.dataset.lit = to?.dataset.k ?? '';
     if (!to) { g.style.opacity = '0'; return; }
     g.style.opacity = '1';
     g.style.setProperty('--gx', to.offsetLeft + 'px');
