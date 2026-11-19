@@ -16,6 +16,16 @@ const SIZES: Record<string, [number, number]> = {
   '/assets/img-12-730bb099.jpg': [900, 714],
   '/assets/img-13-b3047fd0.jpg': [640, 508],
   '/assets/img-14-e1aac2f3.jpg': [640, 508],
+  '/assets/img-15-22505d70.jpg': [1402, 1122],
+  '/assets/img-16-ed114285.jpg': [1402, 1122],
+  '/assets/img-17-9f2b005f.jpg': [1402, 1122],
+  '/assets/img-18-7ad74c50.jpg': [1402, 1122],
+  '/assets/img-19-69ecc02b.jpg': [1402, 1122],
+  '/assets/img-20-fe6ff034.jpg': [1402, 1122],
+  '/assets/img-21-80a29e8a.jpg': [1402, 1122],
+  '/assets/img-22-332d5c6f.jpg': [1403, 1121],
+  '/assets/img-23-c7ed8510.jpg': [1402, 1122],
+  '/assets/img-24-34e41e0a.jpg': [1402, 1122],
 };
 
 type Props = Omit<ImageProps, 'src' | 'width' | 'height'> & { src: string };

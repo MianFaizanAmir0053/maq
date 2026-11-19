@@ -326,7 +326,6 @@ footer a,footer p{line-height:1.9}
 .fab.l{left:20px}.fab.r{right:20px;opacity:0;pointer-events:none;transform:translateY(10px)}.fab.r.on{opacity:1;pointer-events:auto;transform:none}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}.pill.ph span,.pill span small+*{}.pill{padding:9px 12px}.pill.ph span{display:none}.pill span{font-size:11px}.catrow{justify-content:flex-start}.bn{gap:10px}.orb{width:60px}.pc b{font-size:12px}.brand{width:70px;height:70px}}
-.pc .ph img{object-position:68% 50%}
 @media(max-width:760px){.bt h2{white-space:normal;font-size:clamp(44px,13vw,80px)}}
 
 /* ===== REDESIGN v2 ===== */
