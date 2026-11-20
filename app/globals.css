@@ -1472,3 +1472,10 @@ header.nb .nb-links[data-lit="home"] [data-k="home"].open .nb-caret,header.nb .n
  .cf-track,.cf-btn,.cf-btn::before,.cf-dot::after,.cf-ph,.cf-badge{animation:none}
  .cfeat .cf-line>span,.cfeat .cf-live,.cfeat .cf-lead,.cfeat .cf-steps li,.cfeat .cf-ctas,.cfeat .cf-art{transform:none;opacity:1;transition:none}
 }
+/* catering feature on mobile: one clean photo, no collage, badge or floating */
+@media(max-width:900px){
+ .cf-art{aspect-ratio:16/11;max-width:none;justify-self:stretch}
+ .cf-ph-a{inset:0;border-radius:20px;animation:none;transform:none}
+ .cf-ph-b,.cf-ph-c,.cf-badge{display:none}
+ .cf-ph-a img{object-position:72% 50%}
+}

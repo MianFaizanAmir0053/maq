@@ -81,7 +81,7 @@ function MenuMega() {
       </div>
       <aside className="nb-feature">
         <Link href="/#popular" className="nb-feat-card">
-          <span className="nb-feat-img"><Pic src="/assets/img-10-d7f3e453.jpg" alt="" sizes="260px" /></span>
+          <span className="nb-feat-img"><Pic src="/assets/img-18-7ad74c50.jpg" alt="" sizes="260px" /></span>
           <span className="nb-feat-tx">
             <small>Most ordered</small>
             <b>Popular picks</b>

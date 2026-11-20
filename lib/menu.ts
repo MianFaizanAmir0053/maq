@@ -24,10 +24,10 @@ const IMG = {
   bannerChicken: A + 'img-02-9e6f5045.jpg',
   bannerPizzas: A + 'img-03-1096dc4e.jpg',
   bannerFries: A + 'img-04-843dc6a3.jpg',
-  // stand-in photos, for dishes that don't have their own yet
-  burger: A + 'img-10-d7f3e453.jpg',
-  chicken: A + 'img-12-730bb099.jpg',
-  fries: A + 'img-13-b3047fd0.jpg',
+  // stand-ins for dishes without their own photo: real MAQ photos where we have one (no real pizza photo yet)
+  burger: A + 'img-15-22505d70.jpg', // MAQ Smash
+  chicken: A + 'img-21-80a29e8a.jpg', // MAQ Chicken
+  fries: A + 'img-23-c7ed8510.jpg', // MAQ Loaded Fries
   pizza: A + 'img-14-e1aac2f3.jpg',
   // each dish's own photo
   maqSmash: A + 'img-15-22505d70.jpg',

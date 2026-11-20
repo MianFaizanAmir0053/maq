@@ -45,7 +45,7 @@ export default function CateringFeature() {
             <span className="cf-line"><span>a crowd?</span></span>
           </h2>
           <p className="cf-lead">
-            Smash burgers, crispy chicken, hot pizzas and loaded fries, made fresh for your office, party, club or event.
+            Smash burgers, crispy chicken burgers, hot pizzas and loaded fries, made fresh for your office, party, club or event.
             Tell us the date and headcount and we’ll come back with a menu and a quote.
           </p>
           <ul className="cf-steps">
@@ -63,8 +63,8 @@ export default function CateringFeature() {
 
         <div className="cf-art" aria-hidden="true">
           <div className="cf-ph cf-ph-a"><Pic src="/assets/img-09-1306451b.webp" alt="" sizes="(max-width: 900px) 80vw, 420px" /></div>
-          <div className="cf-ph cf-ph-b"><Pic src="/assets/img-12-730bb099.jpg" alt="" sizes="(max-width: 900px) 50vw, 300px" /></div>
-          <div className="cf-ph cf-ph-c"><Pic src="/assets/img-10-d7f3e453.jpg" alt="" sizes="(max-width: 900px) 40vw, 220px" /></div>
+          <div className="cf-ph cf-ph-b"><Pic src="/assets/img-21-80a29e8a.jpg" alt="" sizes="(max-width: 900px) 50vw, 300px" /></div>
+          <div className="cf-ph cf-ph-c"><Pic src="/assets/img-15-22505d70.jpg" alt="" sizes="(max-width: 900px) 40vw, 220px" /></div>
           <span className="cf-badge"><b>Any size</b><small>offices to parties</small></span>
         </div>
       </div>
