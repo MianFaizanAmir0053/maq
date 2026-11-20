@@ -1,3 +1,4 @@
+import CateringFeature from '@/components/CateringFeature';
 import HeroSlider from '@/components/HeroSlider';
 import { HomeMenu } from '@/components/MenuExplorer';
 
@@ -6,6 +7,7 @@ export default function HomePage() {
     <main id="main" tabIndex={-1}>
       <h1 className="sr-only">MAQ Burgers — explore our menu</h1>
       <HeroSlider />
+      <CateringFeature />
       <HomeMenu />
     </main>
   );

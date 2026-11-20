@@ -2,8 +2,8 @@
 export const SITE = {
   name: 'MAQ Burgers',
   phone: '(02) 0000 0000', // PLACEHOLDER
-  email: 'hello@example.com', // PLACEHOLDER
-  address: 'Your street address, Suburb STATE 0000', // PLACEHOLDER
+  email: 'maqburgers@gmail.com',
+  address: '17B Beechboro Road South, Bayswater WA 6053',
   hours: [
     ['Monday', '11am – 10pm'],
     ['Tuesday', '11am – 10pm'],
