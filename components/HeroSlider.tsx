@@ -18,7 +18,7 @@ const SLIDES: Slide[] = [
     cls: 's2', name: 'Southern Fried', img: '/assets/img-07-6c323c24.webp',
     alt: 'Crispy chicken burger with slaw beside golden fried chicken.',
     kicker: 'Crunch you can hear', big: 'SOUTHERN|FRIED',
-    body: 'Fried chicken fillet, creamy coleslaw, pickles and Smash sauce. From $16.90.',
+    body: 'Fried chicken fillet, creamy coleslaw, pickles and MAQ sauce. From $16.90.',
     href: '/menu/chicken', cta: 'Explore chicken',
   },
   {
@@ -32,7 +32,7 @@ const SLIDES: Slide[] = [
     cls: 's4', name: 'Loaded Fries', img: '/assets/img-09-1306451b.webp',
     alt: 'Loaded fries topped with beef, melted cheddar and sauce.',
     kicker: 'Loaded up. Sauced right.', big: 'LOADED|FRIES',
-    body: 'French fries, smashed beef patty with cheese, bacon, barbecue sauce and Smash sauce. $18.00.',
+    body: 'French fries, smashed beef patty with cheese, halal bacon, barbecue sauce and MAQ sauce. $18.00.',
     href: '/menu/fries', cta: 'Explore loaded fries',
   },
 ];

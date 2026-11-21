@@ -45,8 +45,8 @@ const IMG = {
   southernFried: A + 'img-27-0a9d54f1.jpg',
   chickenDynamite: A + 'img-28-93aaa2f9.jpg',
   // photos for the text-only menu panels
-  wings: A + 'img-30-e016ab14.jpg',
-  kidsBox: A + 'img-31-b676071b.jpg',
+  wings: A + 'img-36-9f07c8da.jpg',
+  kidsBox: A + 'img-37-925006f3.jpg',
 };
 
 export const MENU_NOTE = 'All prices in AUD';
@@ -59,19 +59,19 @@ const RAW: RawCategory[] = [
       { n: 'MAQ Classic', s: 10, d: 15, badge: 'Popular', img: IMG.maqClassic,
         desc: 'Smashed beef patty, melted cheese, pickles, onion, white special sauce and ketchup.' },
       { n: 'MAQ Smash', s: 15.9, d: 20.9, img: IMG.maqSmash,
-        desc: 'Toasted buns, smashed beef patty, melted cheese, onion rings, lettuce, jalapeño, Smash sauce and tomato relish.' },
+        desc: 'Toasted buns, smashed beef patty, melted cheese, onion rings, lettuce, jalapeño, MAQ sauce and tomato relish.' },
       { n: 'MAQ Smoky', s: 15.9, d: 20.9, img: IMG.maqSmoky,
-        desc: 'Toasted buns, smashed beef patty, lettuce, melted cheese, onion rings, grilled mushrooms, Smash Special sauce and barbecue sauce.' },
+        desc: 'Toasted buns, smashed beef patty, lettuce, melted cheese, onion rings, grilled mushrooms, MAQ sauce and barbecue sauce.' },
       { n: 'Double Stack', p: 19, img: IMG.doubleStack,
-        desc: 'Toasted bun, two smashed beef patties, melted cheese, caramelised onion, pickles and Smash sauce.' },
+        desc: 'Toasted bun, two smashed beef patties, melted cheese, caramelised onion, pickles and MAQ sauce.' },
       { n: 'MAQ Special', s: 15.9, d: 20.9, img: IMG.maqSpecial,
         desc: 'Toasted buns, smashed beef patty, cheese slice, coleslaw, pickles, jalapeño, grilled pineapple, peri-peri sauce and honey mustard sauce.' },
       { n: 'MAQ Signature', s: 16, d: 21, img: IMG.maqSignature,
-        desc: 'Toasted bun, smashed beef patty, melted cheese, lettuce, onion rings, bacon, pickles, Smash Special sauce and tomato ketchup.' },
+        desc: 'Toasted bun, smashed beef patty, melted cheese, lettuce, onion rings, bacon, pickles, MAQ sauce and tomato ketchup.' },
       { n: 'MAQ Oklahoma', s: 16, d: 21, img: IMG.maqOklahoma,
-        desc: 'Beef patty smashed with fresh onions and jalapeños, sweet pickles, lettuce, caramelised onion and homemade chilli sauce.' },
+        desc: 'Smash patty with fresh onion, jalapeños, pickles and MAQ sauce.' },
       { n: 'MAQ Monster', p: 26, img: IMG.maqMonster,
-        desc: 'Toasted bun, four smashed beef patties, lettuce, mushrooms, onion rings, Smash sauce and barbecue sauce.' },
+        desc: 'Toasted bun, four smashed beef patties, lettuce, mushrooms, onion rings, MAQ sauce and barbecue sauce.' },
     ],
   },
   {
@@ -79,9 +79,9 @@ const RAW: RawCategory[] = [
     tagline: 'Crunch You Can Hear.', banner: IMG.bannerChicken, thumb: IMG.chicken,
     items: [
       { n: 'MAQ Chicken', s: 16.9, d: 22.9, img: IMG.maqChicken,
-        desc: 'Toasted bun, fried chicken fillet, lettuce, tomato slice, cheese slice, Smash sauce and tomato relish.' },
+        desc: 'Toasted bun, fried chicken fillet, lettuce, tomato slice, cheese slice, MAQ sauce and tomato relish.' },
       { n: 'Southern Fried', s: 16.9, d: 22.9, img: IMG.southernFried,
-        desc: 'Toasted bun, fried chicken fillet, creamy coleslaw, pickles and Smash sauce.' },
+        desc: 'Toasted bun, fried chicken fillet, creamy coleslaw, pickles and MAQ sauce.' },
       { n: 'Chicken Dynamite', s: 16.9, d: 22.9, img: IMG.chickenDynamite,
         desc: 'Toasted bun, fried chicken fillet, lettuce, nachos, chopped tomato, chopped jalapeño, cheese slice, honey mustard and peri-peri sauce.' },
       { n: 'MAQ Grill', p: 16, img: IMG.maqGrill,
@@ -108,17 +108,17 @@ const RAW: RawCategory[] = [
   {
     id: 'kebabs', title: 'Kebabs', short: 'Kebabs',
     items: [
-      { n: 'Doner Kebab', p: 17 },
-      { n: 'Chicken Kebab', p: 17 },
-      { n: 'Mixed Kebab', p: 17 },
-      { n: 'Crispy Chicken Kebab', p: 17 },
+      { n: 'Doner Kebab', p: 16 },
+      { n: 'Chicken Kebab', p: 16 },
+      { n: 'Mixed Kebab', p: 16 },
+      { n: 'Crispy Chicken Kebab', p: 16 },
     ],
   },
   {
     id: 'meat-boxes', title: 'Meat Boxes', short: 'Meat Boxes',
     items: [
-      { n: 'Chicken Meat Box', p: 18 },
-      { n: 'Doner Meat Box', p: 18 },
+      { n: 'Chicken Meat Box', p: 15 },
+      { n: 'Doner Meat Box', p: 15 },
     ],
   },
   {
@@ -126,9 +126,9 @@ const RAW: RawCategory[] = [
     tagline: 'Loaded Up. Sauced Right.', banner: IMG.bannerFries, thumb: IMG.fries,
     items: [
       { n: 'MAQ Loaded Fries', p: 18, img: IMG.maqLoadedFries,
-        desc: 'French fries, smashed beef patty with cheese, bacon, barbecue sauce, Smash sauce and parsley on top.' },
+        desc: 'French fries, smashed beef patty with cheese, halal bacon, barbecue sauce, MAQ sauce and parsley on top.' },
       { n: 'Crispy Chicken Loaded Fries', p: 18, img: IMG.chickenLoadedFries,
-        desc: 'French fries, crunchy chicken pieces, creamy coleslaw, Smash sauce, peri-peri sauce and parsley on top.' },
+        desc: 'French fries, crunchy chicken pieces, creamy coleslaw, MAQ sauce, peri-peri sauce and parsley on top.' },
     ],
   },
   {
@@ -170,7 +170,7 @@ const RAW: RawCategory[] = [
   {
     id: 'sauces', title: 'Sauces', short: 'Sauces',
     items: [
-      { n: 'Smash Sauce', p: 1 },
+      { n: 'MAQ Sauce', p: 1 },
       { n: 'Honey Mustard Sauce', p: 1 },
       { n: 'White Garlic Sauce', p: 1 },
       { n: 'Barbecue Sauce', p: 1 },
