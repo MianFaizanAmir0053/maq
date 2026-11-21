@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import Pic from '@/components/Pic';
 import SizePicker from '@/components/SizePicker';
 import {
-  MENU_NOTE, PRODUCTS, categoryById, categoryHref, fromText, itemHref, money, productBySlug,
+  PRODUCTS, categoryById, categoryHref, fromText, itemHref, money, productBySlug,
 } from '@/lib/menu';
 
 type Props = { params: Promise<{ category: string; item: string }> };
@@ -67,7 +67,6 @@ export default async function ProductPage({ params }: Props) {
                 ? <SizePicker single={p.single!} double={p.double!} />
                 : <div className="ip-price"><b>{money(p.price!)}</b></div>}
               <ul className="ip-notes">
-                <li>{MENU_NOTE}.</li>
                 <li>For ingredient or allergy questions, please check with the team before ordering.</li>
               </ul>
               <div className="ip-actions">

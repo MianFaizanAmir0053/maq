@@ -17,7 +17,6 @@ const CATERING: Child[] = [
 ];
 const CONTACT: Child[] = [
   { href: '/contact#message', title: 'Send a message', desc: 'Menu, allergens or big orders' },
-  { href: '/contact#hours', title: 'Opening hours', desc: 'Lunch and dinner, seven days' },
   { href: mapsHref, title: 'Get directions', desc: SITE.address, external: true },
   { href: telHref, title: 'Call us', desc: SITE.phone, accent: true },
 ];

@@ -53,8 +53,6 @@ const IMG = {
   tendersCard: A + 'img-41-8226e6f2.jpg', // same photo cropped for the card
 };
 
-export const MENU_NOTE = 'All prices in AUD';
-
 const RAW: RawCategory[] = [
   {
     id: 'burgers', title: 'Smashed Beef Burgers', short: 'Burgers',
@@ -223,8 +221,6 @@ export type Category = {
   thumb?: string;
   /** big photo tile in the home page's category grid */
   tile: boolean;
-  /** "01".."12" */
-  num: string;
   photo: boolean;
   count: number;
   min: number;
@@ -257,7 +253,7 @@ export const CATEGORIES: Category[] = RAW.map((c, i) => {
   const min = Math.min(...(main.length ? main : items).map(it => it.from));
   return {
     id: c.id, title: c.title, short: c.short, tagline: c.tagline, banner: c.banner, thumb: c.thumb,
-    num: String(i + 1).padStart(2, '0'), photo: !!c.banner, tile: !!c.banner && c.tile !== 'text', count: items.length, min,
+    photo: !!c.banner, tile: !!c.banner && c.tile !== 'text', count: items.length, min,
     meta: items.length + (items.length === 1 ? ' item' : ' items') + ' · from ' + money(min),
     items,
   };

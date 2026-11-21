@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import {
-  CATEGORIES, MENU_NOTE, POPULAR_ITEMS, categoryById, categoryHref,
+  CATEGORIES, POPULAR_ITEMS, categoryById, categoryHref,
   type Category, type MenuItem,
 } from '@/lib/menu';
 import CategoryNav from './CategoryNav';
@@ -152,7 +152,7 @@ export function HomeMenu() {
                   key={c.id}
                 >
                   <BoardBanner c={c} />
-                  <h3 className="mp-h"><Link href={categoryHref(c.id)}>{c.title}</Link><span>{c.num}</span></h3>
+                  <h3 className="mp-h"><Link href={categoryHref(c.id)}>{c.title}</Link></h3>
                   <ul className="mrows">
                     {c.items.map(it => <MenuRow key={it.slug} item={it} hidden={!match(it)} />)}
                   </ul>
@@ -180,7 +180,7 @@ function BoardBanner({ c, route }: { c: Category; route?: boolean }) {
       data-cat={c.id}
       style={c.thumb ? ({ '--bn-img': `url('${c.thumb}')` } as React.CSSProperties) : undefined}
     >
-      <div className="bt"><span className="bn-num">{c.num}</span><h2 className="d">{c.title}</h2><span className="sp2">{c.meta}</span></div>
+      <div className="bt"><h2 className="d">{c.title}</h2><span className="sp2">{c.meta}</span></div>
     </div>
   );
 }
@@ -191,21 +191,19 @@ function CategoryIndex() {
     <section className="cindex" id="categories" aria-labelledby="ci-title">
       <div className="ci-head">
         <div><span className="eyebrow-l">The full menu</span><h2 className="vh2" id="ci-title">Browse by category</h2></div>
-        <p>{CATEGORIES.length} categories · {MENU_NOTE}</p>
+        <p>{CATEGORIES.length} categories</p>
       </div>
       <ul className="ci-grid">
         {CATEGORIES.map(c => c.tile ? (
           <li className="ci-photo" key={c.id}>
             <Link href={categoryHref(c.id)}>
               <Pic src={c.thumb!} alt="" sizes="(max-width: 700px) 100vw, 40vw" />
-              <span className="ci-num">{c.num}</span>
               <span className="ci-tx"><b>{c.title}</b><small>{c.meta}</small></span>
             </Link>
           </li>
         ) : (
           <li className="ci-text" key={c.id}>
             <Link href={categoryHref(c.id)}>
-              <span className="ci-num">{c.num}</span>
               <span className="ci-tx"><b>{c.title}</b><small>{c.meta}</small></span>
               <span className="ci-go" aria-hidden="true">→</span>
             </Link>

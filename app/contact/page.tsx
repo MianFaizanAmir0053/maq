@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import HoursList from '@/components/HoursList';
 import { ContactForm } from '@/components/forms';
 import { SITE, mailHref, mapsHref, telHref } from '@/lib/site';
 
@@ -37,10 +36,6 @@ export default function ContactPage() {
               <div className="ccard">
                 {ico(<><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></>)}
                 <div><h2>Email</h2><p><a href={mailHref}>{SITE.email}</a></p></div>
-              </div>
-              <div className="ccard hours" id="hours">
-                {ico(<><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></>)}
-                <div><h2>Opening hours</h2><HoursList /></div>
               </div>
             </div>
             <div className="fcard fcard-c" id="message">

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { CATEGORIES, MENU_NOTE, categoryHref } from '@/lib/menu';
+import { CATEGORIES, categoryHref } from '@/lib/menu';
 import { CloseIcon, GridIcon } from './icons';
 
 type Props = {
@@ -102,7 +102,6 @@ export default function CategoryNav({ active, back = false, onPick }: Props) {
               return (
                 <li key={c.id}>
                   <Link href={categoryHref(c.id)} data-tab={c.id} className={on ? 'on' : undefined} aria-current={on ? 'page' : undefined} onClick={onPick}>
-                    <span className="cs-num">{c.num}</span>
                     <span className="cs-tx"><b>{c.title}</b><small>{c.meta}</small></span>
                     <span className="cs-go" aria-hidden="true">→</span>
                   </Link>
@@ -110,7 +109,6 @@ export default function CategoryNav({ active, back = false, onPick }: Props) {
               );
             })}
           </ul>
-          <p className="cs-note">{MENU_NOTE}</p>
         </div>
       </dialog>
     </div>

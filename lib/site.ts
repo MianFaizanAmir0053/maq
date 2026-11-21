@@ -4,15 +4,6 @@ export const SITE = {
   phone: '0421 435 003',
   email: 'maqburgers@gmail.com',
   address: '17B Beechboro Road South, Bayswater WA 6053',
-  hours: [
-    ['Monday', '11am – 10pm'],
-    ['Tuesday', '11am – 10pm'],
-    ['Wednesday', '11am – 10pm'],
-    ['Thursday', '11am – 10pm'],
-    ['Friday', '11am – 11pm'],
-    ['Saturday', '11am – 11pm'],
-    ['Sunday', '12pm – 10pm'],
-  ] as [string, string][], // PLACEHOLDER
   /** Public URL of the deployed site, used for the sitemap and social links. */
   url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
 };
