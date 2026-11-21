@@ -36,7 +36,6 @@ export default function Footer() {
       </div>
       <div className="wrap sf-copy">
         <span>© {new Date().getFullYear()} MAQ Burgers</span>
-        <span>Food photography is illustrative.</span>
       </div>
     </footer>
   );

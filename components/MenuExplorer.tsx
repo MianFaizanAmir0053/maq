@@ -165,9 +165,6 @@ export function HomeMenu() {
         <p className="none" id="none" hidden={result.any}>
           No dishes found. Try “chicken”, “pizza” or clear your search to browse everything.
         </p>
-        <p className="menu-note">
-          Menu browsing only · Food photography is illustrative. Please confirm availability and dietary requirements with the team.
-        </p>
       </div>
     </>
   );

@@ -5,7 +5,7 @@ export const SITE = {
   email: 'maqburgers@gmail.com',
   address: '17B Beechboro Road South, Bayswater WA 6053',
   /** Public URL of the deployed site, used for the sitemap and social links. */
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.maqburgers.com.au',
 };
 
 /** "0421 435 003" → "tel:+61421435003", so the link dials from any phone */
