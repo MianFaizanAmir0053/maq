@@ -49,6 +49,8 @@ const IMG = {
   // photos for the text-only menu panels
   wings: A + 'img-36-9f07c8da.jpg',
   kidsBox: A + 'img-37-925006f3.jpg',
+  tenders: A + 'img-40-3db33e88.jpg', // two chicken tenders on slate (wide, for the banner)
+  tendersCard: A + 'img-41-8226e6f2.jpg', // same photo cropped for the card
 };
 
 export const MENU_NOTE = 'All prices in AUD';
@@ -110,17 +112,17 @@ const RAW: RawCategory[] = [
   {
     id: 'kebabs', title: 'Kebabs', short: 'Kebabs',
     items: [
-      { n: 'Doner Kebab', p: 16 },
-      { n: 'Chicken Kebab', p: 16 },
-      { n: 'Mixed Kebab', p: 16 },
-      { n: 'Crispy Chicken Kebab', p: 16 },
+      { n: 'Doner Kebab', p: 17 },
+      { n: 'Chicken Kebab', p: 17 },
+      { n: 'Mixed Kebab', p: 17 },
+      { n: 'Crispy Chicken Kebab', p: 17 },
     ],
   },
   {
     id: 'meat-boxes', title: 'Meat Boxes', short: 'Meat Boxes',
     items: [
-      { n: 'Chicken Meat Box', p: 15 },
-      { n: 'Doner Meat Box', p: 15 },
+      { n: 'Chicken Meat Box', p: 18 },
+      { n: 'Doner Meat Box', p: 18 },
     ],
   },
   {
@@ -141,8 +143,8 @@ const RAW: RawCategory[] = [
     ],
   },
   {
-    id: 'tenders', title: 'Chicken Tenders', short: 'Tenders',
-    items: [{ n: '2 pcs', p: 12 }],
+    id: 'tenders', title: 'Chicken Tenders', short: 'Tenders', banner: IMG.tenders, thumb: IMG.tenders, tile: 'text',
+    items: [{ n: '2 pcs', p: 12, img: IMG.tendersCard }],
   },
   {
     id: 'sides', title: 'Sides', short: 'Sides',

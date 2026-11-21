@@ -29,10 +29,10 @@ const SLIDES: Slide[] = [
     href: '/menu/pizzas', cta: 'Explore pizzas',
   },
   {
-    cls: 's4', name: 'Loaded Fries', img: '/assets/img-09-1306451b.webp',
-    alt: 'Loaded fries topped with beef, melted cheddar and sauce.',
+    cls: 's4', name: 'Loaded Fries', img: '/assets/img-39-cdc35d60.webp',
+    alt: 'Crispy chicken loaded fries with coleslaw, creamy sauce and parsley on checked paper.',
     kicker: 'Loaded up. Sauced right.', big: 'LOADED|FRIES',
-    body: 'French fries, smashed beef patty with cheese, halal bacon, barbecue sauce and MAQ sauce. $18.00.',
+    body: 'French fries, crunchy chicken pieces, creamy coleslaw, MAQ sauce and peri-peri sauce. $18.00.',
     href: '/menu/fries', cta: 'Explore loaded fries',
   },
 ];

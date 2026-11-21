@@ -62,7 +62,7 @@ export default function CateringFeature() {
         </div>
 
         <div className="cf-art" aria-hidden="true">
-          <div className="cf-ph cf-ph-a"><Pic src="/assets/img-09-1306451b.webp" alt="" sizes="(max-width: 900px) 80vw, 420px" /></div>
+          <div className="cf-ph cf-ph-a"><Pic src="/assets/img-23-c7ed8510.jpg" alt="" sizes="(max-width: 900px) 80vw, 420px" /></div>
           <div className="cf-ph cf-ph-b"><Pic src="/assets/img-21-80a29e8a.jpg" alt="" sizes="(max-width: 900px) 50vw, 300px" /></div>
           <div className="cf-ph cf-ph-c"><Pic src="/assets/img-15-22505d70.jpg" alt="" sizes="(max-width: 900px) 40vw, 220px" /></div>
           <span className="cf-badge"><b>Any size</b><small>offices to parties</small></span>
