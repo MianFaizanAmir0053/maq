@@ -8,8 +8,8 @@ type Slide = { cls: string; name: string; img: string; alt: string; kicker: stri
 
 const SLIDES: Slide[] = [
   {
-    cls: 's1', name: 'MAQ Classic', img: '/assets/img-06-6845b64c.webp',
-    alt: 'Double beef cheeseburger with cheddar and pickles on dark slate.',
+    cls: 's1', name: 'MAQ Classic', img: '/assets/img-35-b46ed744.webp',
+    alt: 'MAQ Classic smash burger with melted cheese, diced pickles, onion and ketchup on dark slate.',
     kicker: 'The classic, made properly', big: 'MAQ|CLASSIC',
     body: 'Smashed beef patty, melted cheese, pickles, onion, white special sauce and ketchup. From $10.00.',
     href: '/menu/burgers', cta: 'Explore burgers',
@@ -46,7 +46,8 @@ function BigText({ text }: { text: string }) {
         <span className="l" aria-hidden="true" key={li}>
           {[...line].map((ch, ci) => {
             i++;
-            return <span className="ch" key={ci} style={{ '--i': i, '--r': '0deg', '--s': 1 } as CSSProperties}>{ch}</span>;
+            // a plain space collapses to nothing inside an inline-block letter, so keep it as a non-breaking space
+            return <span className="ch" key={ci} style={{ '--i': i, '--r': '0deg', '--s': 1 } as CSSProperties}>{ch === ' ' ? ' ' : ch}</span>;
           })}
         </span>
       ))}

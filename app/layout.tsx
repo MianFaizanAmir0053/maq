@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: 'MAQ Burgers — Explore the Menu', template: '%s | MAQ Burgers' },
   description: 'Smash burgers, chicken, pizzas, loaded fries and kebabs — made fresh at MAQ Burgers.',
-  openGraph: { siteName: 'MAQ Burgers', type: 'website', images: ['/assets/img-06-6845b64c.webp'] },
+  openGraph: { siteName: 'MAQ Burgers', type: 'website', images: ['/assets/img-35-b46ed744.webp'] },
   icons: { icon: '/assets/img-05-d6dd3910.jpg' },
 };
 

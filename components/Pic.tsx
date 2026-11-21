@@ -7,7 +7,7 @@ const SIZES: Record<string, [number, number]> = {
   '/assets/img-03-1096dc4e.jpg': [1800, 600],
   '/assets/img-04-843dc6a3.jpg': [1800, 600],
   '/assets/img-05-d6dd3910.jpg': [407, 300],
-  '/assets/img-06-6845b64c.webp': [1672, 941],
+  '/assets/img-35-b46ed744.webp': [1672, 941],
   '/assets/img-07-6c323c24.webp': [1672, 941],
   '/assets/img-08-78704772.webp': [1672, 941],
   '/assets/img-09-1306451b.webp': [1672, 941],
