@@ -10,13 +10,14 @@
      desc  description (optional)
      img   photo (optional). Items with a photo get a card and their own
            page; items without one are listed as menu rows.
-     pic   small photo on a menu row (optional), for a row with no page of its own
    ===================================================================== */
 
-type RawItem = { n: string; p?: number; s?: number; d?: number; desc?: string; img?: string; pic?: string; badge?: string };
+type RawItem = { n: string; p?: number; s?: number; d?: number; desc?: string; img?: string; badge?: string };
 type RawCategory = {
   id: string; title: string; short: string; tagline?: string;
   banner?: string; thumb?: string; items: RawItem[];
+  /** 'text': a small text tile in the home page's category grid even with a banner */
+  tile?: 'text';
 };
 
 const A = '/assets/';
@@ -133,9 +134,9 @@ const RAW: RawCategory[] = [
     ],
   },
   {
-    id: 'wings', title: 'Fried Wings', short: 'Wings', thumb: IMG.wings,
+    id: 'wings', title: 'Fried Wings', short: 'Wings', banner: IMG.wings, thumb: IMG.wings, tile: 'text',
     items: [
-      { n: 'Plain (5 pcs)', p: 12, pic: IMG.wings },
+      { n: 'Plain (5 pcs)', p: 12, img: IMG.wings },
       { n: 'Hot Honey (5 pcs)', p: 14 },
     ],
   },
@@ -152,8 +153,8 @@ const RAW: RawCategory[] = [
     ],
   },
   {
-    id: 'kids', title: 'Kids Snack Box', short: 'Kids', thumb: IMG.kidsBox,
-    items: [{ n: 'Kids Snack Box', p: 10, pic: IMG.kidsBox, desc: '6 chicken nuggets, small fries and tomato sauce.' }],
+    id: 'kids', title: 'Kids Snack Box', short: 'Kids', banner: IMG.kidsBox, thumb: IMG.kidsBox, tile: 'text',
+    items: [{ n: 'Kids Snack Box', p: 10, img: IMG.kidsBox, desc: '6 chicken nuggets, small fries and tomato sauce.' }],
   },
   {
     id: 'add-ons', title: 'Add-ons', short: 'Add-ons',
@@ -195,8 +196,6 @@ export type MenuItem = {
   catTitle: string;
   desc?: string;
   img?: string;
-  /** small photo on a menu row */
-  pic?: string;
   badge?: string;
   /** Single / Double pricing */
   sized: boolean;
@@ -220,6 +219,8 @@ export type Category = {
   tagline?: string;
   banner?: string;
   thumb?: string;
+  /** big photo tile in the home page's category grid */
+  tile: boolean;
   /** "01".."12" */
   num: string;
   photo: boolean;
@@ -244,7 +245,7 @@ export const CATEGORIES: Category[] = RAW.map((c, i) => {
     const from = sized ? it.s! : it.p!;
     const priceText = sized ? 'S ' + money(it.s!) + ' / D ' + money(it.d!) : money(it.p!);
     return {
-      name: it.n, slug, catId: c.id, catTitle: c.title, desc: it.desc, img: it.img, pic: it.pic, badge: it.badge,
+      name: it.n, slug, catId: c.id, catTitle: c.title, desc: it.desc, img: it.img, badge: it.badge,
       sized, price: it.p, single: it.s, double: it.d, from, priceText, page: !!it.img,
       search: [it.n, it.desc ?? '', c.title, sized ? 'From ' + money(it.s!) : money(it.p!)].join(' ').toLowerCase(),
     };
@@ -254,7 +255,7 @@ export const CATEGORIES: Category[] = RAW.map((c, i) => {
   const min = Math.min(...(main.length ? main : items).map(it => it.from));
   return {
     id: c.id, title: c.title, short: c.short, tagline: c.tagline, banner: c.banner, thumb: c.thumb,
-    num: String(i + 1).padStart(2, '0'), photo: !!c.banner, count: items.length, min,
+    num: String(i + 1).padStart(2, '0'), photo: !!c.banner, tile: !!c.banner && c.tile !== 'text', count: items.length, min,
     meta: items.length + (items.length === 1 ? ' item' : ' items') + ' · from ' + money(min),
     items,
   };

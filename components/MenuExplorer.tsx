@@ -194,7 +194,7 @@ function CategoryIndex() {
         <p>{CATEGORIES.length} categories · {MENU_NOTE}</p>
       </div>
       <ul className="ci-grid">
-        {CATEGORIES.map(c => c.photo ? (
+        {CATEGORIES.map(c => c.tile ? (
           <li className="ci-photo" key={c.id}>
             <Link href={categoryHref(c.id)}>
               <Pic src={c.thumb!} alt="" sizes="(max-width: 700px) 100vw, 40vw" />
