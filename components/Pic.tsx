@@ -19,13 +19,22 @@ const SIZES: Record<string, [number, number]> = {
   '/assets/img-15-22505d70.jpg': [1402, 1122],
   '/assets/img-16-ed114285.jpg': [1402, 1122],
   '/assets/img-17-9f2b005f.jpg': [1402, 1122],
-  '/assets/img-18-7ad74c50.jpg': [1402, 1122],
   '/assets/img-19-69ecc02b.jpg': [1402, 1122],
   '/assets/img-20-fe6ff034.jpg': [1402, 1122],
   '/assets/img-21-80a29e8a.jpg': [1402, 1122],
   '/assets/img-22-332d5c6f.jpg': [1403, 1121],
   '/assets/img-23-c7ed8510.jpg': [1402, 1122],
   '/assets/img-24-34e41e0a.jpg': [1402, 1122],
+  '/assets/img-25-9604fc61.jpg': [1402, 1122],
+  '/assets/img-26-9e2a7389.jpg': [1402, 1122],
+  '/assets/img-27-0a9d54f1.jpg': [1402, 1122],
+  '/assets/img-28-93aaa2f9.jpg': [1402, 1122],
+  '/assets/img-29-0afd9679.jpg': [1402, 1122],
+  '/assets/img-30-e016ab14.jpg': [1402, 1122],
+  '/assets/img-31-b676071b.jpg': [1402, 1122],
+  '/assets/img-32-18048921.jpg': [2172, 724],
+  '/assets/img-33-35b98c87.jpg': [2172, 724],
+  '/assets/img-34-787888ff.jpg': [2172, 724],
 };
 
 type Props = Omit<ImageProps, 'src' | 'width' | 'height'> & { src: string };

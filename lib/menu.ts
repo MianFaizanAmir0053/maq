@@ -20,10 +20,10 @@ type RawCategory = {
 
 const A = '/assets/';
 const IMG = {
-  bannerBurgers: A + 'img-01-d0872144.jpg',
-  bannerChicken: A + 'img-02-9e6f5045.jpg',
+  bannerBurgers: A + 'img-32-18048921.jpg', // twin burgers
+  bannerChicken: A + 'img-33-35b98c87.jpg', // monster burger and chicken bucket
   bannerPizzas: A + 'img-03-1096dc4e.jpg',
-  bannerFries: A + 'img-04-843dc6a3.jpg',
+  bannerFries: A + 'img-34-787888ff.jpg', // loaded fries duo
   // stand-ins for dishes without their own photo: real MAQ photos where we have one (no real pizza photo yet)
   burger: A + 'img-15-22505d70.jpg', // MAQ Smash
   chicken: A + 'img-21-80a29e8a.jpg', // MAQ Chicken
@@ -33,13 +33,20 @@ const IMG = {
   maqSmash: A + 'img-15-22505d70.jpg',
   maqSmoky: A + 'img-16-ed114285.jpg',
   doubleStack: A + 'img-17-9f2b005f.jpg',
-  maqSignature: A + 'img-18-7ad74c50.jpg',
+  maqSignature: A + 'img-29-0afd9679.jpg',
   maqOklahoma: A + 'img-19-69ecc02b.jpg',
   maqMonster: A + 'img-20-fe6ff034.jpg',
   maqChicken: A + 'img-21-80a29e8a.jpg',
   maqGrill: A + 'img-22-332d5c6f.jpg',
   maqLoadedFries: A + 'img-23-c7ed8510.jpg',
   chickenLoadedFries: A + 'img-24-34e41e0a.jpg',
+  maqClassic: A + 'img-25-9604fc61.jpg',
+  maqSpecial: A + 'img-26-9e2a7389.jpg',
+  southernFried: A + 'img-27-0a9d54f1.jpg',
+  chickenDynamite: A + 'img-28-93aaa2f9.jpg',
+  // photos for the text-only menu panels
+  wings: A + 'img-30-e016ab14.jpg',
+  kidsBox: A + 'img-31-b676071b.jpg',
 };
 
 export const MENU_NOTE = 'All prices in AUD';
@@ -49,7 +56,7 @@ const RAW: RawCategory[] = [
     id: 'burgers', title: 'Smashed Beef Burgers', short: 'Burgers',
     tagline: 'Smashed Fresh. Stacked Proper.', banner: IMG.bannerBurgers, thumb: IMG.burger,
     items: [
-      { n: 'MAQ Classic', s: 10, d: 15, badge: 'Popular', img: IMG.burger,
+      { n: 'MAQ Classic', s: 10, d: 15, badge: 'Popular', img: IMG.maqClassic,
         desc: 'Smashed beef patty, melted cheese, pickles, onion, white special sauce and ketchup.' },
       { n: 'MAQ Smash', s: 15.9, d: 20.9, img: IMG.maqSmash,
         desc: 'Toasted buns, smashed beef patty, melted cheese, onion rings, lettuce, jalapeño, Smash sauce and tomato relish.' },
@@ -57,7 +64,7 @@ const RAW: RawCategory[] = [
         desc: 'Toasted buns, smashed beef patty, lettuce, melted cheese, onion rings, grilled mushrooms, Smash Special sauce and barbecue sauce.' },
       { n: 'Double Stack', p: 19, img: IMG.doubleStack,
         desc: 'Toasted bun, two smashed beef patties, melted cheese, caramelised onion, pickles and Smash sauce.' },
-      { n: 'MAQ Special', s: 15.9, d: 20.9, img: IMG.burger,
+      { n: 'MAQ Special', s: 15.9, d: 20.9, img: IMG.maqSpecial,
         desc: 'Toasted buns, smashed beef patty, cheese slice, coleslaw, pickles, jalapeño, grilled pineapple, peri-peri sauce and honey mustard sauce.' },
       { n: 'MAQ Signature', s: 16, d: 21, img: IMG.maqSignature,
         desc: 'Toasted bun, smashed beef patty, melted cheese, lettuce, onion rings, bacon, pickles, Smash Special sauce and tomato ketchup.' },
@@ -73,9 +80,9 @@ const RAW: RawCategory[] = [
     items: [
       { n: 'MAQ Chicken', s: 16.9, d: 22.9, img: IMG.maqChicken,
         desc: 'Toasted bun, fried chicken fillet, lettuce, tomato slice, cheese slice, Smash sauce and tomato relish.' },
-      { n: 'Southern Fried', s: 16.9, d: 22.9, img: IMG.chicken,
+      { n: 'Southern Fried', s: 16.9, d: 22.9, img: IMG.southernFried,
         desc: 'Toasted bun, fried chicken fillet, creamy coleslaw, pickles and Smash sauce.' },
-      { n: 'Chicken Dynamite', s: 16.9, d: 22.9, img: IMG.chicken,
+      { n: 'Chicken Dynamite', s: 16.9, d: 22.9, img: IMG.chickenDynamite,
         desc: 'Toasted bun, fried chicken fillet, lettuce, nachos, chopped tomato, chopped jalapeño, cheese slice, honey mustard and peri-peri sauce.' },
       { n: 'MAQ Grill', p: 16, img: IMG.maqGrill,
         desc: 'Toasted bun, thigh fillet, cheese slice, pickle, lettuce and special sauce.' },
@@ -101,17 +108,17 @@ const RAW: RawCategory[] = [
   {
     id: 'kebabs', title: 'Kebabs', short: 'Kebabs',
     items: [
-      { n: 'Doner Kebab', p: 16 },
-      { n: 'Chicken Kebab', p: 16 },
-      { n: 'Mixed Kebab', p: 16 },
-      { n: 'Crispy Chicken Kebab', p: 16 },
+      { n: 'Doner Kebab', p: 17 },
+      { n: 'Chicken Kebab', p: 17 },
+      { n: 'Mixed Kebab', p: 17 },
+      { n: 'Crispy Chicken Kebab', p: 17 },
     ],
   },
   {
     id: 'meat-boxes', title: 'Meat Boxes', short: 'Meat Boxes',
     items: [
-      { n: 'Chicken Meat Box', p: 15 },
-      { n: 'Doner Meat Box', p: 15 },
+      { n: 'Chicken Meat Box', p: 18 },
+      { n: 'Doner Meat Box', p: 18 },
     ],
   },
   {
@@ -125,7 +132,7 @@ const RAW: RawCategory[] = [
     ],
   },
   {
-    id: 'wings', title: 'Fried Wings', short: 'Wings',
+    id: 'wings', title: 'Fried Wings', short: 'Wings', thumb: IMG.wings,
     items: [
       { n: 'Plain (5 pcs)', p: 12 },
       { n: 'Hot Honey (5 pcs)', p: 14 },
@@ -144,7 +151,7 @@ const RAW: RawCategory[] = [
     ],
   },
   {
-    id: 'kids', title: 'Kids Snack Box', short: 'Kids',
+    id: 'kids', title: 'Kids Snack Box', short: 'Kids', thumb: IMG.kidsBox,
     items: [{ n: 'Kids Snack Box', p: 10, desc: '6 chicken nuggets, small fries and tomato sauce.' }],
   },
   {

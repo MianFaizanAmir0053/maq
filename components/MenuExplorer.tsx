@@ -175,7 +175,11 @@ export function HomeMenu() {
 
 function BoardBanner({ c, route }: { c: Category; route?: boolean }) {
   return (
-    <div className={'bn bn-text' + longTitle(c) + (route ? ' route-banner' : '')} data-cat={c.id}>
+    <div
+      className={'bn bn-text' + longTitle(c) + (route ? ' route-banner' : '') + (c.thumb ? ' bn-pic' : '')}
+      data-cat={c.id}
+      style={c.thumb ? ({ '--bn-img': `url('${c.thumb}')` } as React.CSSProperties) : undefined}
+    >
       <div className="bt"><span className="bn-num">{c.num}</span><h2 className="d">{c.title}</h2><span className="sp2">{c.meta}</span></div>
     </div>
   );
