@@ -1053,6 +1053,10 @@ footer.site-footer .sf-copy{display:flex;justify-content:space-between;gap:16px;
 .mrow{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);break-inside:avoid}
 .mrow:last-child{border-bottom:0}
 .mrow[hidden]{display:none}
+.mrow.has-pic:not([hidden]){display:flex;align-items:center;gap:14px}
+.mr-pic{flex:none;width:64px;height:64px;border-radius:12px;overflow:hidden;background:#151515;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.mr-pic img{display:block;width:100%;height:100%;object-fit:cover}
+.mr-body{flex:1;min-width:0}
 .mr-t{display:flex;align-items:baseline;gap:10px}
 .mr-t b{font:500 14px/1.4 var(--body);color:var(--cream)}
 .mr-l{flex:1;min-width:14px;border-bottom:1px dotted rgba(241,241,241,.35);transform:translateY(-4px)}
@@ -1076,6 +1080,8 @@ footer.site-footer .sf-copy{display:flex;justify-content:space-between;gap:16px;
 .category-page .mpanel .mrows{max-width:900px;margin:0 auto;padding:0 4px}
 .category-page .mpanel .mrows:has(>.mrow:nth-child(5)){max-width:none;columns:2 360px;column-gap:56px}
 .category-page .mrow{padding:20px 0}
+.category-page .mr-pic{width:96px;height:96px;border-radius:16px}
+.category-page .mrow.has-pic{gap:20px}
 .category-page .mr-t b{font-size:17px}
 .category-page .mr-t i{font-size:15px}
 .category-page .mrow p{font-size:14px}
