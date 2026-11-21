@@ -15,8 +15,8 @@ const SLIDES: Slide[] = [
     href: '/menu/burgers', cta: 'Explore burgers',
   },
   {
-    cls: 's2', name: 'Southern Fried', img: '/assets/img-07-6c323c24.webp',
-    alt: 'Crispy chicken burger with slaw beside golden fried chicken.',
+    cls: 's2', name: 'Southern Fried', img: '/assets/img-38-b8940c2a.webp',
+    alt: 'Southern Fried chicken burger with crispy fillet, creamy coleslaw and sauce on dark slate.',
     kicker: 'Crunch you can hear', big: 'SOUTHERN|FRIED',
     body: 'Fried chicken fillet, creamy coleslaw, pickles and MAQ sauce. From $16.90.',
     href: '/menu/chicken', cta: 'Explore chicken',
