@@ -71,7 +71,7 @@ function EnquiryForm({ kind, id, submitLabel, children, before }: {
   const [done, setDone] = useState<Done | null>(null);
 
   const fields = () =>
-    [...(form.current?.querySelectorAll<Field>('input:not([type=checkbox]),select,textarea') ?? [])];
+    [...(form.current?.querySelectorAll<Field>('input:not([type=checkbox]):not([name=website]),select,textarea') ?? [])];
 
   const check = (el: Field) => {
     const msg = messageFor(el);
@@ -144,6 +144,11 @@ function EnquiryForm({ kind, id, submitLabel, children, before }: {
         }}
       >
         {before}
+        {/* spam trap: hidden from people and screen readers, so only bots fill it in */}
+        <input
+          type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+          style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+        />
         <div className="fgrid">{children}</div>
         <div className="factions">
           <button className="fbtn" type="submit" disabled={sending}>

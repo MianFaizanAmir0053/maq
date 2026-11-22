@@ -32,9 +32,13 @@ dishes without one are listed as menu-board rows.
 
 ## Forms
 
-Both forms post to `/api/enquiry`, which validates the data and forwards it to
-`ENQUIRY_WEBHOOK_URL` if set (see `.env.example`). Without it, submissions are
-only logged in the server console.
+Both forms post to `/api/enquiry`, which validates the data and emails it to the
+address in `lib/site.ts` (or `ENQUIRY_EMAIL`) through FormSubmit (formsubmit.co).
+No account or key is needed, but the first submission sends an "Activate form"
+email to that inbox, and nothing is delivered until the button in it is clicked.
+Set `ENQUIRY_WEBHOOK_URL` to send a JSON POST somewhere else instead (see
+`.env.example`). If delivery fails, the visitor is told it didn't send and is
+shown the phone number.
 
 ## Old static version
 
