@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CategoryMenu } from '@/components/MenuExplorer';
-import { CATEGORIES, categoryById } from '@/lib/menu';
+import { CATEGORIES, categoryById, categoryHref } from '@/lib/menu';
+import { DEFAULT_OG_IMAGE, OG } from '@/lib/schema';
+import { SITE } from '@/lib/site';
 
 type Props = { params: Promise<{ category: string }> };
 
@@ -15,9 +17,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const c = categoryById((await params).category);
   if (!c) return {};
   return {
-    title: c.title,
-    description: `${c.title} at MAQ Burgers: ${c.meta}.${c.tagline ? ' ' + c.tagline : ''}`,
-    openGraph: c.banner ? { images: [c.banner] } : undefined,
+    title: `${c.title} in ${SITE.area}`,
+    description: `${c.title} at MAQ Burgers, ${SITE.area}: ${c.meta}.${c.tagline ? ' ' + c.tagline : ''}`,
+    alternates: { canonical: categoryHref(c.id) },
+    openGraph: { ...OG, images: [c.banner ?? DEFAULT_OG_IMAGE] },
   };
 }
 

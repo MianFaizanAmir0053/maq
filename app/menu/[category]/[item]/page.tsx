@@ -6,6 +6,8 @@ import SizePicker from '@/components/SizePicker';
 import {
   PRODUCTS, categoryById, categoryHref, fromText, itemHref, money, productBySlug,
 } from '@/lib/menu';
+import { DEFAULT_OG_IMAGE, OG } from '@/lib/schema';
+import { SITE } from '@/lib/site';
 
 type Props = { params: Promise<{ category: string; item: string }> };
 
@@ -27,9 +29,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!found) return {};
   const { p, c } = found;
   return {
-    title: p.name,
-    description: `${p.name} (${c.title}, ${p.priceText}). ${p.desc ?? ''}`.trim(),
-    openGraph: { images: p.img ? [p.img] : undefined },
+    title: `${p.name} (${c.title})`,
+    description: `${p.name}, ${p.priceText}, at MAQ Burgers in ${SITE.area}. ${p.desc ?? ''}`.trim(),
+    alternates: { canonical: itemHref(p) },
+    openGraph: { ...OG, images: [p.img ?? DEFAULT_OG_IMAGE] },
   };
 }
 

@@ -3,6 +3,7 @@ import { Anton, Cormorant_Garamond, Plus_Jakarta_Sans, Luckiest_Guy } from 'next
 import Fabs from '@/components/Fabs';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { DEFAULT_OG_IMAGE, OG } from '@/lib/schema';
 import { SITE } from '@/lib/site';
 import './globals.css';
 
@@ -11,12 +12,21 @@ const cormorant = Cormorant_Garamond({ weight: '500', style: 'italic', subsets: 
 const jakarta = Plus_Jakarta_Sans({ weight: ['400', '500', '600', '700'], subsets: ['latin'], variable: '--font-jakarta', display: 'swap' });
 const luckiest = Luckiest_Guy({ weight: '400', subsets: ['latin'], variable: '--font-luckiest', display: 'swap' });
 
+const bing = process.env.BING_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: 'MAQ Burgers — Explore the Menu', template: '%s | MAQ Burgers' },
-  description: 'Smash burgers, chicken, pizzas, loaded fries and kebabs — made fresh at MAQ Burgers.',
-  openGraph: { siteName: 'MAQ Burgers', type: 'website', images: ['/assets/img-35-b46ed744.webp'] },
+  title: { default: `MAQ Burgers | Smash Burgers, Pizza & Kebabs in ${SITE.area}`, template: '%s | MAQ Burgers' },
+  description: `Smash burgers, fried chicken, pizzas, loaded fries and kebabs, made fresh at MAQ Burgers, ${SITE.address}. Catering for events across Perth.`,
+  openGraph: { ...OG, images: [DEFAULT_OG_IMAGE] },
+  twitter: { card: 'summary_large_image' },
   icons: { icon: '/assets/img-05-d6dd3910.jpg' },
+  // Site ownership codes from Google Search Console and Bing Webmaster Tools, set as Vercel
+  // environment variables. Not needed if the site is verified by DNS record instead.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: bing ? { 'msvalidate.01': bing } : undefined,
+  },
 };
 
 export const viewport: Viewport = {

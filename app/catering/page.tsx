@@ -5,8 +5,9 @@ import { CateringForm } from '@/components/forms';
 import { SITE, mailHref, telHref } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Catering',
-  description: 'MAQ Burgers catering: smash burgers, crispy chicken, hot pizzas and loaded fries for offices, parties, clubs and community events.',
+  title: 'Catering in Perth',
+  description: 'MAQ Burgers catering across Perth: smash burgers, crispy chicken, hot pizzas and loaded fries for offices, parties, weddings, clubs and community events.',
+  alternates: { canonical: '/catering' },
 };
 
 const OCCASIONS = [

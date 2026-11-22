@@ -4,7 +4,8 @@ import { SITE, mailHref, mapsHref, telHref } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Questions about the MAQ Burgers menu, allergens or a big order? Send us a message or come and see us.',
+  description: `Find MAQ Burgers at ${SITE.address}, call ${SITE.phone}, or send us a message about the menu, allergens or a big order.`,
+  alternates: { canonical: '/contact' },
 };
 
 const ico = (path: React.ReactNode) => (

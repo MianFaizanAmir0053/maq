@@ -13,6 +13,18 @@ const nextConfig: NextConfig = {
     // File names in /public/assets carry a content hash, so optimised copies can be cached for a month.
     minimumCacheTTL: 2678400,
   },
+  async redirects() {
+    return [
+      {
+        // Vercel's own address for the project serves the same pages; send it (and search
+        // engines) to the real domain so only one copy of each page gets indexed.
+        source: '/:path*',
+        has: [{ type: 'host', value: 'maq-rho.vercel.app' }],
+        destination: 'https://www.maqburgers.com.au/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
