@@ -42,8 +42,13 @@ const SIZES: Record<string, [number, number]> = {
 
 type Props = Omit<ImageProps, 'src' | 'width' | 'height'> & { src: string };
 
-/** next/image with the width and height filled in from SIZES. */
-export default function Pic({ src, alt, sizes = '(max-width: 700px) 80vw, 420px', ...rest }: Props) {
+/**
+ * next/image with the width and height filled in from SIZES (or `fill` to cover its parent).
+ * Food photos default to quality 60, which looks the same as 75 here at a much smaller size;
+ * the allowed qualities are listed in next.config.ts.
+ */
+export default function Pic({ src, alt, sizes = '(max-width: 700px) 80vw, 420px', quality = 60, fill, ...rest }: Props) {
+  if (fill) return <Image src={src} alt={alt} fill sizes={sizes} quality={quality} {...rest} />;
   const [width, height] = SIZES[src] ?? [800, 600];
-  return <Image src={src} alt={alt} width={width} height={height} sizes={sizes} {...rest} />;
+  return <Image src={src} alt={alt} width={width} height={height} sizes={sizes} quality={quality} {...rest} />;
 }

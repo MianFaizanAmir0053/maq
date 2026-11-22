@@ -74,11 +74,19 @@ export default function HeroSlider() {
   const [ci, setCi] = useState(0);
   const [tick, setTick] = useState(0);
   const [paused, setPaused] = useState(false);
+  // Only the first slide's photo loads with the page; the rest follow once the page has finished loading.
+  const [warm, setWarm] = useState(false);
   const reduced = useRef(false);
-  const touchX = useRef(0);
+  const swipe = useRef<{ x: number; y: number } | null>(null);
+  const swiped = useRef(false);
 
   useEffect(() => {
     reduced.current = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    let timer = 0;
+    const later = () => { timer = window.setTimeout(() => setWarm(true), 600); };
+    if (document.readyState === 'complete') later();
+    else window.addEventListener('load', later, { once: true });
+    return () => { window.removeEventListener('load', later); clearTimeout(timer); };
   }, []);
 
   const go = (n: number) => {
@@ -94,29 +102,51 @@ export default function HeroSlider() {
         role="region"
         aria-roledescription="carousel"
         aria-label="Featured MAQ favourites"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+        // pause on mouse hover only: on a phone a tap would otherwise stop the slideshow for good
+        onPointerEnter={e => { if (e.pointerType === 'mouse') setPaused(true); }}
+        onPointerLeave={e => { if (e.pointerType === 'mouse') setPaused(false); }}
         onFocus={() => setPaused(true)}
         onBlur={() => setPaused(false)}
         onKeyDown={e => {
           if (e.key === 'ArrowRight') { e.preventDefault(); go(ci + 1); }
           if (e.key === 'ArrowLeft') { e.preventDefault(); go(ci - 1); }
         }}
-        onPointerDown={e => { touchX.current = e.clientX; }}
+        // Swipe left/right to change slide. CSS sets touch-action: pan-y on #sl, so the phone keeps
+        // vertical scrolling but hands sideways swipes to us instead of cancelling the pointer.
+        onPointerDown={e => {
+          if (e.pointerType === 'mouse' && e.button !== 0) return;
+          swipe.current = { x: e.clientX, y: e.clientY };
+          swiped.current = false;
+        }}
         onPointerUp={e => {
-          const d = e.clientX - touchX.current;
-          if (Math.abs(d) > 50) go(ci + (d < 0 ? 1 : -1));
+          const s = swipe.current;
+          swipe.current = null;
+          if (!s) return;
+          const dx = e.clientX - s.x, dy = e.clientY - s.y;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+            swiped.current = true;
+            go(ci + (dx < 0 ? 1 : -1));
+          }
+        }}
+        onPointerCancel={() => { swipe.current = null; }}
+        // a swipe that ends on the slide's link must not also open it
+        onClickCapture={e => {
+          if (swiped.current) { e.preventDefault(); e.stopPropagation(); swiped.current = false; }
         }}
       >
         {SLIDES.map((s, i) => (
           <article className={'slide ' + s.cls + (i === ci ? ' on' : '')} aria-label={s.name} key={s.cls}>
-            <Pic
-              className="hero-banner"
-              src={s.img}
-              alt={s.alt}
-              sizes="100vw"
-              preload={i === 0}
-            />
+            {(i === 0 || i === ci || warm) && (
+              <Pic
+                className="hero-banner"
+                src={s.img}
+                alt={s.alt}
+                sizes="(max-width: 1500px) 100vw, 1500px"
+                quality={70}
+                preload={i === 0}
+                fetchPriority={i === 0 ? 'high' : 'low'}
+              />
+            )}
             <div className="tx">
               <p className="k">{s.kicker}</p>
               <BigText text={s.big} />

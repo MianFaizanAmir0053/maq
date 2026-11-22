@@ -95,7 +95,7 @@ export default function Header() {
           <div className="nb-bar">
             <Link className="nb-brand" href="/" aria-label="MAQ Burgers home">
               <span className="nb-crest">
-                <Pic src="/assets/img-05-d6dd3910.jpg" alt="" preload sizes="80px" style={{ height: 'auto' }} />
+                <Pic src="/assets/img-05-d6dd3910.jpg" alt="" preload sizes="80px" quality={75} style={{ height: 'auto' }} />
               </span>
               <span className="nb-word" aria-hidden="true"><b>MAQ</b><i>Burgers</i></span>
             </Link>

@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="wrap sf-grid">
         <div className="sf-brand">
           <Link className="sf-crest" href="/" aria-label="MAQ Burgers home">
-            <Pic src="/assets/img-05-d6dd3910.jpg" alt="" sizes="200px" style={{ height: 'auto' }} />
+            <Pic src="/assets/img-05-d6dd3910.jpg" alt="" sizes="200px" quality={75} style={{ height: 'auto' }} />
           </Link>
           <p>Smash burgers, crispy chicken, hot pizzas and loaded fries, made fresh.</p>
         </div>

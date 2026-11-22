@@ -397,11 +397,10 @@ footer a,footer p{line-height:1.9}
 .bn .bo{display:none}
 .bn .bt{z-index:2}
 .bn .bt h2{text-shadow:0 4px 30px rgba(0,0,0,.8)}
-@media(max-width:760px){.bn{aspect-ratio:auto;min-height:200px;background-size:auto 100%;background-position:center}}
-#burgers.bn{background-image:url(/assets/img-32-18048921.jpg)}
-#chicken.bn{background-image:url(/assets/img-33-35b98c87.jpg)}
-#pizzas.bn{background-image:url(/assets/img-03-1096dc4e.jpg)}
-#fries.bn{background-image:url(/assets/img-34-787888ff.jpg)}
+@media(max-width:760px){.bn{aspect-ratio:auto;min-height:200px}}
+/* banner photo: an optimised <img> under the gradient and title (the .bn is isolated, so z-index -1 stays inside it) */
+.bn .bn-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-1;pointer-events:none}
+.menu.is-searching .bn .bn-img{display:none}
 
 /* ===== MINIMAL v5: borderless, flat, soft ===== */
 :root{--soft:rgba(255,255,255,.06);--soft2:rgba(255,255,255,.1)}
@@ -1470,5 +1469,17 @@ header.nb .nb-links[data-lit="home"] [data-k="home"].open .nb-caret,header.nb .n
  .cf-ph-a img{object-position:72% 50%}
 }
 
-/* text-only menu panels (Wings, Kids) with a photo: picture on the right, fading into the dark behind the title */
-.bn.bn-text.bn-pic{background:linear-gradient(90deg,#0b0b0b 0,#0b0b0b 32%,rgba(11,11,11,.55) 58%,rgba(11,11,11,.1) 100%),var(--bn-img) right center/cover no-repeat,#0b0b0b}
+
+/* ===== Touch and phones ===== */
+/* Hero: the browser keeps vertical scrolling and hands sideways swipes to the slider. */
+#sl{touch-action:pan-y}
+@media(max-width:760px){
+ /* card rows: one card per swipe, with the next card peeking in */
+ .grid.product-track{scroll-snap-type:x mandatory;touch-action:pan-x pan-y;scroll-behavior:auto}
+ /* keep the last footer lines clear of the floating buttons */
+ footer.site-footer{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
+@media(hover:none){
+ /* no hover-zoom on touch screens: it sticks after a tap */
+ .pc:hover,.pc:hover .ph img,.ci-grid a:hover,.ci-photo a:hover img{transform:none}
+}

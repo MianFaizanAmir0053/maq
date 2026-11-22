@@ -121,8 +121,8 @@ export function HomeMenu() {
                   className={'bn' + longTitle(c)}
                   data-cat={c.id}
                   hidden={!shown.length && !shownRows.length}
-                  style={{ backgroundImage: `url('${c.banner}')` }}
                 >
+                  <Pic className="bn-img" src={c.banner!} alt="" fill sizes="100vw" />
                   <div className="bt"><h2 className="d">{c.title}</h2><span className="sp2">{c.tagline || c.meta}</span></div>
                   <Link className="category-banner-link" href={categoryHref(c.id)} aria-label={'Explore ' + c.title}></Link>
                 </div>
@@ -173,9 +173,8 @@ export function HomeMenu() {
 function BoardBanner({ c, route }: { c: Category; route?: boolean }) {
   return (
     <div
-      className={'bn bn-text' + longTitle(c) + (route ? ' route-banner' : '') + (c.thumb ? ' bn-pic' : '')}
+      className={'bn bn-text' + longTitle(c) + (route ? ' route-banner' : '')}
       data-cat={c.id}
-      style={c.thumb ? ({ '--bn-img': `url('${c.thumb}')` } as React.CSSProperties) : undefined}
     >
       <div className="bt"><h2 className="d">{c.title}</h2><span className="sp2">{c.meta}</span></div>
     </div>
@@ -224,7 +223,8 @@ export function CategoryMenu({ id }: { id: string }) {
       <div id="cats-list">
         {c.photo ? (
           <section className="msec route-sec" id={c.id} data-cat={c.id}>
-            <div className={'bn route-banner' + longTitle(c)} data-cat={c.id} style={{ backgroundImage: `url('${c.banner}')` }}>
+            <div className={'bn route-banner' + longTitle(c)} data-cat={c.id}>
+              <Pic className="bn-img" src={c.banner!} alt="" fill sizes="100vw" loading="eager" fetchPriority="high" />
               <div className="bt"><h2 className="d">{c.title}</h2><span className="sp2">{c.tagline || c.meta}</span></div>
             </div>
             {nav}
