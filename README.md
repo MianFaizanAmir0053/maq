@@ -27,18 +27,18 @@ dishes without one are listed as menu-board rows.
 - `/menu/[category]`: one category (12 static pages)
 - `/menu/[category]/[item]`: dish page with Single/Double prices
 - `/catering`: catering info and enquiry form
-- `/contact`: contact details, opening hours and message form
-- `/api/enquiry`: receives both forms
+- `/contact`: contact details and message form
 
 ## Forms
 
-Both forms post to `/api/enquiry`, which validates the data and emails it to the
-address in `lib/site.ts` (or `ENQUIRY_EMAIL`) through FormSubmit (formsubmit.co).
-No account or key is needed, but the first submission sends an "Activate form"
-email to that inbox, and nothing is delivered until the button in it is clicked.
-Set `ENQUIRY_WEBHOOK_URL` to send a JSON POST somewhere else instead (see
-`.env.example`). If delivery fails, the visitor is told it didn't send and is
-shown the phone number.
+Both forms are emailed to the address in `lib/site.ts` through FormSubmit
+(formsubmit.co), straight from the visitor's browser (`sendEnquiry` in
+`components/forms.tsx`). FormSubmit blocks requests from hosting servers like
+Vercel's, so this can't go through an API route. No account or key is needed,
+but the first submission sends an "Activate form" email to that inbox, and
+nothing is delivered until the button in it is clicked. If delivery fails, the
+visitor is told it didn't send and is shown the phone number, and the reason is
+logged in the browser console.
 
 ## Old static version
 
