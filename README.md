@@ -28,17 +28,18 @@ dishes without one are listed as menu-board rows.
 - `/menu/[category]/[item]`: dish page with Single/Double prices
 - `/catering`: catering info and enquiry form
 - `/contact`: contact details and message form
+- `/api/enquiry`: receives both forms and emails them
 
 ## Forms
 
-Both forms are emailed to the address in `lib/site.ts` through FormSubmit
-(formsubmit.co), straight from the visitor's browser (`sendEnquiry` in
-`components/forms.tsx`). FormSubmit blocks requests from hosting servers like
-Vercel's, so this can't go through an API route. No account or key is needed,
-but the first submission sends an "Activate form" email to that inbox, and
-nothing is delivered until the button in it is clicked. If delivery fails, the
-visitor is told it didn't send and is shown the phone number, and the reason is
-logged in the browser console.
+Both forms post to `/api/enquiry`, which checks the data and emails it to the
+shop with Resend (resend.com). It needs `RESEND_API_KEY` set in Vercel's
+environment variables (see `.env.example`); never commit the key, as this
+repository is public. Until `maqburgers.com.au` is verified at
+resend.com/domains, Resend only sends to the Resend account's own address, so
+set `ENQUIRY_TO` to that address, or verify the domain and set `RESEND_FROM`.
+If sending fails, the visitor is told it didn't send and is shown the phone
+number, and the reason is in the Vercel function logs.
 
 ## Old static version
 

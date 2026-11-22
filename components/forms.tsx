@@ -59,39 +59,14 @@ export function Fld({ id, label, required, full, select, children }: FieldProps)
 
 type Done = { first: string; email: string };
 
-/** Field labels for the email, in the order they appear on the forms. */
-const LABELS: Record<string, string> = {
-  name: 'Name', email: 'Email', phone: 'Phone', company: 'Company', date: 'Event date',
-  guests: 'Guests', type: 'Event type', suburb: 'Suburb', menu: 'Menu', topic: 'Topic', message: 'Message',
-};
-
-/**
- * Emails an enquiry to the shop through FormSubmit (formsubmit.co), which needs no account or key.
- * It is sent from the visitor's browser because FormSubmit blocks requests from hosting servers
- * such as Vercel's. The first enquiry makes FormSubmit email SITE.email an "Activate form" link,
- * and nothing is delivered until someone clicks it.
- */
+/** Sends an enquiry to /api/enquiry, which emails it to the shop with Resend. */
 async function sendEnquiry(kind: Kind, data: Record<string, string>) {
-  const rows: Record<string, string> = {};
-  for (const [k, label] of Object.entries(LABELS)) if (data[k]) rows[label] = data[k];
-  const subject = kind === 'catering'
-    ? `Catering enquiry: ${data.name}, ${data.guests} guests on ${data.date}`
-    : `Website message: ${data.topic || 'General question'} from ${data.name}`;
-
-  const r = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(SITE.email), {
+  const r = await fetch('/api/enquiry', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({
-      ...rows,
-      _subject: subject,
-      _replyto: data.email, // "Reply" in the inbox goes straight to the customer
-      _template: 'table',
-      _captcha: 'false',
-    }),
+    body: JSON.stringify({ ...data, form: kind }),
   });
-  const res = (await r.json().catch(() => null)) as { success?: string | boolean; message?: string } | null;
-  // FormSubmit answers 200 with success "false" while the form is waiting for activation
-  if (!r.ok || String(res?.success) !== 'true') throw new Error(`FormSubmit ${r.status}: ${res?.message ?? 'no response'}`);
+  if (!r.ok) throw new Error(`Enquiry API ${r.status}: ${await r.text()}`);
 }
 
 /** Shared behaviour for the catering and contact forms: validation, sending and the thank-you state. */
@@ -140,7 +115,7 @@ function EnquiryForm({ kind, id, submitLabel, children, before }: {
       await sendEnquiry(kind, data);
       setDone(thanks);
     } catch (err) {
-      console.error('[MAQ] Enquiry not sent:', err); // shows FormSubmit's reason in the browser console
+      console.error('[MAQ] Enquiry not sent:', err); // shows the reason in the browser console
       setStatus({
         bad: true,
         text: <>Sorry, that didn’t send. Please try again or call <a href={telHref}>{SITE.phone}</a>.</>,
