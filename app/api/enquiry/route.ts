@@ -13,6 +13,9 @@ import { SITE } from '@/lib/site';
                     at resend.com/domains and set e.g. "MAQ Burgers <website@maqburgers.com.au>".
 */
 
+/** Name of the hidden spam-trap field; must match TRAP in components/forms.tsx. */
+const TRAP = 'hp_x7';
+
 const LIMITS: Record<string, number> = { message: 4000 };
 const MAX = 300;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -46,8 +49,10 @@ export async function POST(req: Request) {
     data[k] = v.trim().slice(0, LIMITS[k] ?? MAX);
   }
 
-  // hidden field that people never see; bots that fill it in get a quiet "ok"
-  if (data.website) return NextResponse.json({ ok: true });
+  // Hidden spam-trap field (TRAP in components/forms.tsx). People never see it, but browser
+  // autofill has filled such fields before, so the enquiry is still sent, just flagged.
+  const trap = (body as Record<string, unknown>)[TRAP];
+  const suspect = typeof trap === 'string' && trap.trim() !== '';
 
   const kind = data.form;
   const required = REQUIRED[kind];
@@ -56,8 +61,10 @@ export async function POST(req: Request) {
   if (missing.length) return NextResponse.json({ ok: false, error: 'Missing fields', fields: missing }, { status: 422 });
   if (!EMAIL.test(data.email)) return NextResponse.json({ ok: false, error: 'Invalid email', fields: ['email'] }, { status: 422 });
 
+  if (suspect) console.warn(`[MAQ] ${kind} enquiry has the spam trap filled; sending it flagged as possible spam`);
+
   try {
-    await sendEmail(kind, data);
+    await sendEmail(kind, data, suspect);
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error(`[MAQ] Could not send ${kind} enquiry:`, err);
@@ -68,15 +75,15 @@ export async function POST(req: Request) {
 const esc = (s: string) =>
   s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
-async function sendEmail(kind: string, data: Record<string, string>) {
+async function sendEmail(kind: string, data: Record<string, string>, suspect: boolean) {
   const key = process.env.RESEND_API_KEY;
   if (!key) throw new Error('RESEND_API_KEY is not set');
 
   const rows = Object.entries(LABELS).filter(([k]) => data[k]).map(([k, label]) => [label, data[k]] as const);
   const title = kind === 'catering' ? 'New catering enquiry' : 'New website message';
-  const subject = kind === 'catering'
+  const subject = (suspect ? '[Possible spam] ' : '') + (kind === 'catering'
     ? `Catering enquiry: ${data.name}, ${data.guests} guests on ${data.date}`
-    : `Website message: ${data.topic || 'General question'} from ${data.name}`;
+    : `Website message: ${data.topic || 'General question'} from ${data.name}`);
 
   const html = `<div style="font-family:Arial,sans-serif;font-size:15px;color:#111">
 <h2 style="margin:0 0 12px">${title}</h2>

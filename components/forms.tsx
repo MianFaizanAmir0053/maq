@@ -59,6 +59,9 @@ export function Fld({ id, label, required, full, select, children }: FieldProps)
 
 type Done = { first: string; email: string };
 
+/** Name of the hidden spam-trap field. Deliberately meaningless, so browser autofill never fills it. Must match TRAP in app/api/enquiry/route.ts. */
+const TRAP = 'hp_x7';
+
 /** Sends an enquiry to /api/enquiry, which emails it to the shop with Resend. */
 async function sendEnquiry(kind: Kind, data: Record<string, string>) {
   const r = await fetch('/api/enquiry', {
@@ -79,9 +82,10 @@ function EnquiryForm({ kind, id, submitLabel, children, before }: {
   const [status, setStatus] = useState<{ bad: boolean; text: ReactNode }>({ bad: false, text: '' });
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState<Done | null>(null);
+  const ready = useIsClient();
 
   const fields = () =>
-    [...(form.current?.querySelectorAll<Field>('input:not([type=checkbox]):not([name=website]),select,textarea') ?? [])];
+    [...(form.current?.querySelectorAll<Field>(`input:not([type=checkbox]):not([name=${TRAP}]),select,textarea`) ?? [])];
 
   const check = (el: Field) => {
     const msg = messageFor(el);
@@ -107,9 +111,8 @@ function EnquiryForm({ kind, id, submitLabel, children, before }: {
     if (menu.length) data.menu = menu.join(', ');
     const thanks = { first: (data.name || '').split(/\s+/)[0], email: data.email };
 
-    // the hidden spam-trap field was filled in, so this is a bot: look done, send nothing
-    if (data.website) { setDone(thanks); return; }
-
+    // Always send, even if the spam trap is filled: browser autofill can fill it for real
+    // people, so the server flags those emails as possible spam instead of dropping them.
     setSending(true);
     try {
       await sendEnquiry(kind, data);
@@ -153,14 +156,17 @@ function EnquiryForm({ kind, id, submitLabel, children, before }: {
         }}
       >
         {before}
-        {/* spam trap: hidden from people and screen readers, so only bots fill it in */}
+        {/* Spam trap: hidden from people and screen readers, so only bots fill it in. The name
+            means nothing to autofill, and the data-* attributes tell password managers to skip it. */}
         <input
-          type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+          type="text" name={TRAP} tabIndex={-1} autoComplete="off" aria-hidden="true"
+          data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other"
           style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
         />
         <div className="fgrid">{children}</div>
         <div className="factions">
-          <button className="fbtn" type="submit" disabled={sending}>
+          {/* disabled until the page's script has loaded, so an early press can't reload the page instead of sending */}
+          <button className="fbtn" type="submit" disabled={sending || !ready}>
             <span>{sending ? 'Sending…' : submitLabel}</span><span aria-hidden="true">→</span>
           </button>
           <p className={'fstatus' + (status.bad ? ' bad' : '')} role="status" aria-live="polite">{status.text}</p>
