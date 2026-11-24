@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   description: `Smash burgers, fried chicken, pizzas, loaded fries and kebabs, made fresh at MAQ Burgers, ${SITE.address}. Catering for events across Perth.`,
   openGraph: { ...OG, images: [DEFAULT_OG_IMAGE] },
   twitter: { card: 'summary_large_image' },
-  icons: { icon: '/assets/img-05-d6dd3910.jpg' },
   // Site ownership codes from Google Search Console and Bing Webmaster Tools, set as Vercel
   // environment variables. Not needed if the site is verified by DNS record instead.
   verification: {
