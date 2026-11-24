@@ -41,6 +41,20 @@ export const restaurantJsonLd = {
   acceptsReservations: false,
 };
 
+/**
+ * The site's name for Google's "site name" line in results (otherwise it shows the domain).
+ * Rendered on the home page only, as Google asks.
+ */
+export const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': abs('/#website'),
+  name: SITE.name,
+  alternateName: ['MAQ', 'MAQ Burgers Bayswater'],
+  url: abs('/'),
+  publisher: { '@id': abs('/#restaurant') },
+};
+
 /** A JSON-LD <script>. "<" is escaped so no value can close the tag early. */
 export function JsonLd({ data }: { data: object }) {
   return (
